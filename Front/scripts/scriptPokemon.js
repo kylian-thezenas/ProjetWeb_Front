@@ -1,3 +1,5 @@
+USER_TOKEN = localStorage.getItem('token');
+
 function createPokemonCard(pokemon) {
   const card = document.createElement('div');
   card.classList.add('card');
@@ -23,7 +25,7 @@ function createPokemonCard(pokemon) {
   numberElement.textContent = pokemon.number;
 
   const typeElement = document.createElement('img');
-  typeElement.src = 'images/'+pokemon.type+'.png';
+  typeElement.src = '../images/'+pokemon.type+'.png';
 
 
   // Ajout des éléments à la carte
@@ -88,7 +90,7 @@ function openModal(pokemon) {
   numberElement.textContent = 'n° : ' + pokemon.number;
 
   const typeElement = document.createElement('img');
-  typeElement.src = 'images/'+pokemon.type+'.png';
+  typeElement.src = '../images/'+pokemon.type+'.png';
 
   const descriptionElement = document.createElement('p');
   descriptionElement.textContent = pokemon.description;
@@ -126,12 +128,17 @@ function populateGrid(pokemonData) {
   });
 }
 
-// Exemple de récupération des données de Pokémon à partir du backend
+function deconnect(){
+  localStorage.removeItem('token');
+  location.reload();
+}
+
+// Récupération des données de Pokémon à partir du backend
 fetch('http://localhost:8000/pokemon/api/pokemon')
   .then(response => response.json())
   .then(data => {
-    // Traitez les données JSON ici
-    console.log(data); // Affiche les données JSON dans la console
+    // Traiter les données JSON 
+    console.log(data); 
     
     // Appel de la fonction pour peupler la grille de Pokémon avec les données
     populateGrid(data);
@@ -139,3 +146,21 @@ fetch('http://localhost:8000/pokemon/api/pokemon')
   .catch(error => {
     console.error('Une erreur s\'est produite lors de la récupération des données :', error);
   });
+
+if (USER_TOKEN) {
+  const co = document.getElementById('connexion-placeholder');
+
+  const name = document.createElement('div');
+
+  
+
+
+  document.getElementById('login').classList.add('hidden');
+  document.getElementById('logout').classList.remove('hidden');
+  document.getElementById('signup').classList.add('hidden');
+}
+
+document.getElementById('logout').addEventListener('click', deconnect);
+
+
+

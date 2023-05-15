@@ -1,4 +1,15 @@
-  #grid {
+   /* Couleurs */
+:root {
+  --primary-color: #ffcb05; /* Jaune */
+  --secondary-color: #ee4830; /* Rouge */
+  --accent-color: #56a3f1; /* Bleu */
+}
+
+.hidden{
+  display: none;
+}
+
+ #grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
@@ -59,13 +70,7 @@
     width: 100%; /* Permet de remplir complètement l'espace disponible dans la carte */
     height: auto; /* Permet de conserver les proportions d'origine de l'image */
   }
-  
-  /* Couleurs */
-:root {
-  --primary-color: #ffcb05; /* Jaune */
-  --secondary-color: #ee4830; /* Rouge */
-  --accent-color: #56a3f1; /* Bleu */
-}
+
 
 /* Navbar */
 nav {
