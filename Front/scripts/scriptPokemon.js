@@ -1,5 +1,6 @@
 USER_TOKEN = localStorage.getItem('token');
 
+
 function createPokemonCard(pokemon) {
   const card = document.createElement('div');
   card.classList.add('card');
@@ -144,16 +145,27 @@ fetch('http://localhost:8000/pokemon/api/pokemon')
     populateGrid(data);
   })
   .catch(error => {
-    console.error('Une erreur s\'est produite lors de la récupération des données :', error);
+    console.error('Une erreur s\'est produite lors de la récupération des données pokemon:', error);
   });
 
 if (USER_TOKEN) {
-  const co = document.getElementById('connexion-placeholder');
 
-  const name = document.createElement('div');
+  const usernameLabel = document.getElementById('username-placeholder');
 
-  
-
+  fetch('http://localhost:8000/user/api/user/connected', {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + USER_TOKEN
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      usernameLabel.textContent = data[0].name;
+    })
+    .catch(error => {
+      console.error('Une erreur s\'est produite lors de la récupération des données utilisateur:', error);
+    });
 
   document.getElementById('login').classList.add('hidden');
   document.getElementById('logout').classList.remove('hidden');
