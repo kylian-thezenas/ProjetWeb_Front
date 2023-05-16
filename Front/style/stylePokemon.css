@@ -9,6 +9,10 @@
   display: none;
 }
 
+main{
+  margin:1rem;
+}
+
  #grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -70,39 +74,6 @@
     width: 100%; /* Permet de remplir complètement l'espace disponible dans la carte */
     height: auto; /* Permet de conserver les proportions d'origine de l'image */
   }
-
-
-/* Navbar */
-nav {
-  background-color: var(--primary-color);
-  padding: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo img {
-  width: 50px;
-  height: 50px;
-}
-
-.navbar-links {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.navbar-links li {
-  margin-right: 10px;
-}
-
-.navbar-links li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 5px;
-}
 
 .buttons {
   display: flex;

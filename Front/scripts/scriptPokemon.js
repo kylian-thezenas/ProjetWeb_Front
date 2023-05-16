@@ -129,10 +129,7 @@ function populateGrid(pokemonData) {
   });
 }
 
-function deconnect(){
-  localStorage.removeItem('token');
-  location.reload();
-}
+
 
 // Récupération des données de Pokémon à partir du backend
 fetch('http://localhost:8000/pokemon/api/pokemon')
@@ -148,31 +145,6 @@ fetch('http://localhost:8000/pokemon/api/pokemon')
     console.error('Une erreur s\'est produite lors de la récupération des données pokemon:', error);
   });
 
-if (USER_TOKEN) {
-
-  const usernameLabel = document.getElementById('username-placeholder');
-
-  fetch('http://localhost:8000/user/api/user/connected', {
-    method: 'GET',
-    headers: {
-      Authorization: 'Bearer ' + USER_TOKEN
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      usernameLabel.textContent = data[0].name;
-    })
-    .catch(error => {
-      console.error('Une erreur s\'est produite lors de la récupération des données utilisateur:', error);
-    });
-
-  document.getElementById('login').classList.add('hidden');
-  document.getElementById('logout').classList.remove('hidden');
-  document.getElementById('signup').classList.add('hidden');
-}
-
-document.getElementById('logout').addEventListener('click', deconnect);
 
 
 
