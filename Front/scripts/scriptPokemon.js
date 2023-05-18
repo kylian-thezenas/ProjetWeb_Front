@@ -129,6 +129,87 @@ function populateGrid(pokemonData) {
   });
 }
 
+// Fonction pour filtrer les Pokémon en fonction de la saisie de l'utilisateur
+function filterPokemons(searchString, selectedTypes) {
+  const grid = document.getElementById('grid');
+  const pokemons = grid.getElementsByClassName('card');
+
+  // Parcourir tous les Pokémon de la grille
+  for (const pokemon of pokemons) {
+    const pokemonName = pokemon.getElementsByClassName('card-back')[0].getElementsByTagName('h2')[0].textContent.toLowerCase();
+    var pokemonType = pokemon.getElementsByClassName('card-back')[0].getElementsByTagName('img')[0].src;
+
+    if (pokemonType.includes('Eau')){
+      pokemonType = 'Eau';
+    } else if (pokemonType.includes('Feu')){
+      pokemonType = 'Feu';
+    } else if (pokemonType.includes('Plante')){
+      pokemonType = 'Plante';
+    } else if (pokemonType.includes('Electrik')){
+      pokemonType = 'Electrik';
+    } else if (pokemonType.includes('Insecte')){
+      pokemonType = 'Insecte';
+    } else if (pokemonType.includes('Vol')){
+      pokemonType = 'Vol';
+    } else if (pokemonType.includes('Poison')){
+      pokemonType = 'Poison';
+    } else if (pokemonType.includes('Sol')){
+      pokemonType = 'Sol';
+    } else if (pokemonType.includes('Fee')){
+      pokemonType = 'Fee';
+    } else if (pokemonType.includes('Combat')){
+      pokemonType = 'Combat';
+    } else if (pokemonType.includes('Roche')){
+      pokemonType = 'Roche';
+    } else if (pokemonType.includes('Spectre')){
+      pokemonType = 'Spectre';
+    } else if (pokemonType.includes('Acier')){
+      pokemonType = 'Acier';
+    } else if (pokemonType.includes('Glace')){
+      pokemonType = 'Glace';
+    } else if (pokemonType.includes('Dragon')){
+      pokemonType = 'Dragon';
+    } else if (pokemonType.includes('Tenebre')){
+      pokemonType = 'Tenebres';
+    } else if (pokemonType.includes('Normal')){
+      pokemonType = 'Normal';
+    } else if (pokemonType.includes('Psy')){
+      pokemonType = 'Psy';
+    }
+
+    // Vérifier si le nom du Pokémon correspond à la saisie de l'utilisateur et si le type du Pokémon est sélectionné
+    if (pokemonName.includes(searchString) && ((selectedTypes.length === 0 || selectedTypes.includes(pokemonType)))) {
+      pokemon.style.display = 'flex'; // Afficher le Pokémon
+    } else {
+      pokemon.style.display = 'none'; // Masquer le Pokémon
+    }
+  }
+}
+
+// Écouteur d'événement pour la saisie de recherche et les cases à cocher de type
+const searchInput = document.getElementById('searchInput');
+const typeCheckboxes = document.querySelectorAll('#filterOptions input[type="checkbox"]');
+const selectedTypes = [];
+
+// Écouteur d'événement pour la saisie de recherche
+searchInput.addEventListener('input', function (event) {
+  const searchString = event.target.value.toLowerCase();
+  filterPokemons(searchString, selectedTypes);
+});
+
+typeCheckboxes.forEach(function (checkbox) {
+  checkbox.addEventListener('change', function () {
+    const checkedTypes = Array.from(typeCheckboxes)
+      .filter(function (checkbox) {
+        return checkbox.checked;
+      })
+      .map(function (checkbox) {
+        return checkbox.value;
+      });
+
+    filterPokemons(searchInput.value.toLowerCase(), checkedTypes);
+  });
+});
 
 
 // Récupération des données de Pokémon à partir du backend
