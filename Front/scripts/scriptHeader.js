@@ -2,6 +2,7 @@ USER_TOKEN = localStorage.getItem('token');
 
 function deconnect(){
     localStorage.removeItem('token');
+    localStorage.removeItem('name');
     location.reload();
 }
 
@@ -18,10 +19,9 @@ if (USER_TOKEN) {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         usernameLabel.textContent = data[0].name;
-        console.log(usernameLabel.textContent);
-      })
+        localStorage.setItem('name', data[0].name);
+      }) 
       .catch(error => {
         console.error('Une erreur s\'est produite lors de la récupération des données utilisateur:', error);
       });

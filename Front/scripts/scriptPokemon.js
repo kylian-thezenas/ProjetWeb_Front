@@ -1,4 +1,27 @@
+
 USER_TOKEN = localStorage.getItem('token');
+USER_NAME = localStorage.getItem('name');
+
+
+function isFavorite(pokemonName) {
+  return new Promise((resolve, reject) => {
+    fetch('http://localhost:8000/favoris/api/favoris/')
+      .then(response => response.json())
+      .then(data => {
+        for (const favoris of data) {
+          if (favoris.userName === USER_NAME && favoris.pokemonName === pokemonName) {
+            resolve(true);
+            return;
+          }
+        }
+        resolve(false);
+      })
+      .catch(error => {
+        console.error('Une erreur s\'est produite lors de la récupération des favoris utilisateur:', error);
+        reject(error);
+      });
+  });
+}
 
 
 function createPokemonCard(pokemon) {
@@ -28,11 +51,52 @@ function createPokemonCard(pokemon) {
   const typeElement = document.createElement('img');
   typeElement.src = '../images/'+pokemon.type+'.png';
 
+  const favoriteButton = document.createElement('button');
+  isFavorite(pokemon.name)
+    .then(isFavorite => {
+      if (isFavorite) {
+        favoriteButton.textContent = 'Retirer des favoris';
+      } else {
+        favoriteButton.textContent = 'Ajouter aux favoris';
+      }
+    })
+    .catch(error => {
+      console.error('Une erreur s\'est produite lors de la récupération des favoris utilisateur:', error);
+    });
+
+  favoriteButton.addEventListener('click', function () { 
+    if (favoriteButton.textContent === 'Ajouter aux favoris') {
+      fetch('http://localhost:8000/favoris/api/favoris', {
+          method: 'POST',        
+          headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({ userName: USER_NAME, pokemonName: pokemon.name })
+        })
+        favoriteButton.textContent = 'Retirer des favoris';
+      }
+      else {
+        
+        fetch('http://localhost:8000/favoris/api/favoris/'+USER_NAME+'/'+pokemon.name, {
+          method: 'DELETE',        
+          headers: {
+          'Content-Type': 'application/json'
+        }
+        })
+        favoriteButton.textContent = 'Ajouter aux favoris';
+        if (favCheckbox.checked) {
+          card.remove();
+        }
+      }
+  });
+
+
 
   // Ajout des éléments à la carte
   back.appendChild(nameElement);
   back.appendChild(numberElement);
   back.appendChild(typeElement);
+  back.appendChild(favoriteButton);
 
 
 
@@ -48,7 +112,7 @@ function createPokemonCard(pokemon) {
   });
 
   card.addEventListener('click', function() {
-    openModal(pokemon);
+    if (event.target !== favoriteButton){openModal(pokemon);}
   });
 
   return card;
@@ -122,10 +186,24 @@ function openModal(pokemon) {
 // Fonction pour ajouter les cartes de Pokémon à la grille
 function populateGrid(pokemonData) {
   const grid = document.getElementById('grid');
+  
 
   pokemonData.forEach((pokemon) => {
-    const card = createPokemonCard(pokemon);
-    grid.appendChild(card);
+    if (favCheckbox.checked) {
+      isFavorite(pokemon.name)
+        .then(isFavorite => {
+          if (isFavorite) {
+            const card = createPokemonCard(pokemon);
+            grid.appendChild(card);
+          }
+        })
+        .catch(error => {
+          console.error('Une erreur s\'est produite lors de la récupération des favoris utilisateur:', error);
+        });
+      } else if (favCheckbox.checked === false) {
+        const card = createPokemonCard(pokemon);
+        grid.appendChild(card);
+    }
   });
 }
 
@@ -217,7 +295,7 @@ fetch('http://localhost:8000/pokemon/api/pokemon')
   .then(response => response.json())
   .then(data => {
     // Traiter les données JSON 
-    console.log(data); 
+    //console.log(data); 
     
     // Appel de la fonction pour peupler la grille de Pokémon avec les données
     populateGrid(data);
@@ -226,6 +304,30 @@ fetch('http://localhost:8000/pokemon/api/pokemon')
     console.error('Une erreur s\'est produite lors de la récupération des données pokemon:', error);
   });
 
+// Écouteur d'événement pour la case à cocher des favoris
+const favCheckbox = document.getElementById('favoriteCheckbox');
+favCheckbox.addEventListener('change', function () {
+  if(USER_TOKEN){
+    const grid = document.getElementById('grid');
+    while (grid.firstChild) {
+      grid.removeChild(grid.firstChild);
+    }
+    fetch('http://localhost:8000/pokemon/api/pokemon')
+      .then(response => response.json())
+      .then(data => {
+        // Traiter les données JSON 
+        //console.log(data); 
+        
+        // Appel de la fonction pour peupler la grille de Pokémon avec les données
+        populateGrid(data);
+      })
+      .catch(error => {
+        console.error('Une erreur s\'est produite lors de la récupération des données pokemon:', error);
+      }); 
+  } else {
+      alert('Vous devez être connecté pour avoir des favoris');
+  }
+});
 
 
 

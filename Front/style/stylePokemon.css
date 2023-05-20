@@ -1,8 +1,12 @@
    /* Couleurs */
 :root {
   --primary-color: #ffcb05; /* Jaune */
-  --secondary-color: #ee4830; /* Rouge */
-  --accent-color: #56a3f1; /* Bleu */
+  --secondary-colors: #ee4830; /* Rouge */
+  --accent-color: #f2f2f2; /* Bleu */
+}
+
+main {
+  
 }
 
 .hidden{
@@ -13,14 +17,21 @@ main{
   margin:1rem;
 }
 
- #grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    gap: 15px;
-    margin: 0 auto;
-    max-width: 900px;
+#grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+@media screen and (max-width: 600px) {
+  #grid {
+    grid-template-columns: 1fr;
   }
+}
+
   
   .card {
     width: 150px;
@@ -178,5 +189,63 @@ main{
   line-height: 1.4;
   margin-bottom: 20px;
 }
+
+
+/* style div de filtres */
+#filterOptions {
+  display: flex;
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  justify-content: space-between;
+  
+}
+
+#searchInput {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 1%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#filter{
+  display:grid;
+  grid-template-columns: repeat(9, 1fr);
+  padding-left:27%;
+}
+
+label {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Styles pour la mise en page adaptative */
+
+@media screen and (min-width: 600px) {
+  #filterOptions {
+    width: 100%; /* Réinitialise la largeur sur les écrans plus petits */
+    float: none; /* Réinitialise le positionnement sur les écrans plus petits */
+    margin-left: 0; /* Réinitialise la marge à gauche sur les écrans plus petits */
+
+  }
+  
+  #searchInput {
+    width: auto;
+    margin-right: 10px;
+  }
+}
+
+
+
 
 
