@@ -11,7 +11,7 @@ if (USER_TOKEN) {
 
     const usernameLabel = document.getElementById('username-placeholder');
     
-    fetch('http://localhost:8000/user/api/user/connected', {
+    fetch((process.env.BACK_URL || 'http://localhost:8000') + '/user/api/user/connected', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + USER_TOKEN

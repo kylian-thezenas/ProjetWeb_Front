@@ -5,7 +5,7 @@ USER_NAME = localStorage.getItem('name');
 
 function isFavorite(pokemonName) {
   return new Promise((resolve, reject) => {
-    fetch('http://localhost:8000/favoris/api/favoris/')
+    fetch((process.env.BACK_URL || 'http://localhost:8000') + '/favoris/api/favoris/')
       .then(response => response.json())
       .then(data => {
         for (const favoris of data) {
@@ -66,7 +66,7 @@ function createPokemonCard(pokemon) {
 
   favoriteButton.addEventListener('click', function () { 
     if (favoriteButton.textContent === 'Ajouter aux favoris') {
-      fetch('http://localhost:8000/favoris/api/favoris', {
+      fetch((process.env.BACK_URL || 'http://localhost:8000') + '/favoris/api/favoris', {
           method: 'POST',        
           headers: {
           'Content-Type': 'application/json'
@@ -77,7 +77,7 @@ function createPokemonCard(pokemon) {
       }
       else {
         
-        fetch('http://localhost:8000/favoris/api/favoris/'+USER_NAME+'/'+pokemon.name, {
+        fetch((process.env.BACK_URL || 'http://localhost:8000') + '/favoris/api/favoris/'+USER_NAME+'/'+pokemon.name, {
           method: 'DELETE',        
           headers: {
           'Content-Type': 'application/json'
@@ -291,7 +291,7 @@ typeCheckboxes.forEach(function (checkbox) {
 
 
 // Récupération des données de Pokémon à partir du backend
-fetch('http://localhost:8000/pokemon/api/pokemon')
+fetch((process.env.BACK_URL || 'http://localhost:8000') + '/pokemon/api/pokemon')
   .then(response => response.json())
   .then(data => {
     // Traiter les données JSON 
@@ -312,7 +312,7 @@ favCheckbox.addEventListener('change', function () {
     while (grid.firstChild) {
       grid.removeChild(grid.firstChild);
     }
-    fetch('http://localhost:8000/pokemon/api/pokemon')
+    fetch((process.env.BACK_URL || 'http://localhost:8000') + '/pokemon/api/pokemon')
       .then(response => response.json())
       .then(data => {
         // Traiter les données JSON 
