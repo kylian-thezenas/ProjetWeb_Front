@@ -1,4 +1,5 @@
 USER_TOKEN = localStorage.getItem('token');
+USER_NAME = localStorage.getItem('name');
 
 function deconnect(){
     localStorage.removeItem('token');
@@ -11,7 +12,7 @@ if (USER_TOKEN) {
 
     const usernameLabel = document.getElementById('username-placeholder');
     
-    fetch((process.env.BACK_URL || 'http://localhost:8000') + '/user/api/user/connected', {
+    fetch('https://pokydexapi.cluster-ig3.igpolytech.fr/user/api/user/connected', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + USER_TOKEN
@@ -24,13 +25,14 @@ if (USER_TOKEN) {
       }) 
       .catch(error => {
         console.error('Une erreur s\'est produite lors de la récupération des données utilisateur:', error);
+        usernameLabel.textContent = USER_NAME;
       });
   
     document.getElementById('login').classList.add('hidden');
     document.getElementById('logout').classList.remove('hidden');
     document.getElementById('user-info').classList.remove('hidden');
     document.getElementById('signup').classList.add('hidden');
-  }
+}
   
   document.getElementById('logout').addEventListener('click', deconnect);
   

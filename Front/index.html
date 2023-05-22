@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Accueil</title>
-        <link rel="stylesheet" href="../style/stylePokemon.css">
-        <link rel="stylesheet" href="../style/styleHeader.css">
+        <link rel="stylesheet" href="style/stylePokemon.css">
+        <link rel="stylesheet" href="style/styleHeader.css">
     </head>
     <body>
         <header>
                 <nav class="navbar">
-                    <a href="#" class="logo">Logo</a>
+                    <img id = "logo" src = "images/logo-blanc.png" alt = "logo">
                     <div class="menu-toggle">
                         <input type="checkbox" id="menu-checkbox">
                         <label for="menu-checkbox"></label>
@@ -23,15 +23,15 @@
                     </ul>
                     <div class="log">
                         <a href="connexion.html" id="login" class="right bouton">SignIn</a>
-                        <a href="#" id="signup" class="right bouton">SignUp</a>
+                        <a href="inscription.html" id="signup" class="right bouton">SignUp</a>
                         <a href="#" id="logout" class="right bouton hidden">Logout</a>
                         <div id="user-info" class="hidden">
-                            <img id="user-avatar" class="right" src="../images/iconeUser.png" alt="avatar">
+                            <img id="user-avatar" class="right" src="images/iconeUser.png" alt="avatar">
                             <label id="username-placeholder" class="right"></label>
                         </div>
                     </div>
                 </nav>
-            <script src="../scripts/scriptHeader.js"></script>
+            <script src="scripts/scriptHeader.js"></script>
         </header>
         <main>
             <div id="filterOptions">
@@ -59,10 +59,8 @@
                 <input type="text" id="searchInput" placeholder="Rechercher...">
             </div>
             <div id="grid">
-                <scirpt> 
-                    console.log(process.env.BACK_URL) 
-                </scirpt> 
-                <script src="../scripts/scriptPokemon.js"></script>
+                
+                <script src="scripts/scriptPokemon.js"></script>
             </div>
         </main>
         

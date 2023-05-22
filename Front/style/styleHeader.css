@@ -26,7 +26,13 @@ body {
 #user-avatar {
     width: 5rem;
     height: auto;
-    display: inline-block;s
+    display: inline-block;
+}
+
+#logo{
+    width: 5%;
+    padding-left: 3rem;
+
 }
 
 .bouton {
