@@ -1,0 +1,2 @@
+URL_BACK = "http://localhost:5000" || "https://pokydexapi.cluster-ig3.igpolytech.fr"
+"

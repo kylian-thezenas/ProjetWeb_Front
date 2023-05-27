@@ -3,10 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Accueil</title>
+        <link rel="icon" href="images/logo-blanc.png" type="image/png">
         <link rel="stylesheet" href="style/stylePokemon.css">
         <link rel="stylesheet" href="style/styleHeader.css">
     </head>
     <body>
+        <script src="scripts/scriptURL.js"></script>
         <header>
                 <nav class="navbar">
                     <img id = "logo" src = "images/logo-blanc.png" alt = "logo">
@@ -18,8 +20,7 @@
                         <span></span>
                     </div>
                     <ul class="menu">
-                        <li><a href="#">Pokemon</a></li>
-                        <li><a href="#">Dresseur</a></li>
+                        <li><a href="#">Pokydex</a></li>
                     </ul>
                     <div class="log">
                         <a href="connexion.html" id="login" class="right bouton">SignIn</a>
@@ -58,8 +59,11 @@
                 <label id="favoriteLabel"><input type="checkbox" id="favoriteCheckbox" name="type" value="Favoris"> Favoris </label>
                 <input type="text" id="searchInput" placeholder="Rechercher...">
             </div>
+            <div id="interfaceAdmin">
+                <button onclick="ouvrirFenetreAjout()" class="hidden" id="addPokemonButton" > <img id="icone" src="images/iconePikachuAjouter.png" alt="icone ajout pokemon"> </button>
+                <button onclick="ouvrirFenetreSuppression()" class="hidden" id="deletePokemonButton" > <img id="icone" src="images/iconePikachuSupprimer.png" alt="icone suppression pokemon"> </button>
+            </div>
             <div id="grid">
-                
                 <script src="scripts/scriptPokemon.js"></script>
             </div>
         </main>
