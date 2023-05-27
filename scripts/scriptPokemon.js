@@ -5,7 +5,7 @@ USER_NAME = localStorage.getItem('name');
 
 function isFavorite(pokemonName) {
   return new Promise((resolve, reject) => {
-    fetch('http://localhost:5000' + '/favoris/api/favoris/')
+    fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/favoris/api/favoris/')
       .then(response => response.json())
       .then(data => {
         for (const favoris of data) {
@@ -26,7 +26,7 @@ function isFavorite(pokemonName) {
 // function qui verifie que l'utilisateur est admin
 function isAdmin() {
   return new Promise((resolve, reject) => {
-    fetch('http://localhost:5000' + '/user/api/user/connected', {
+    fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/user/api/user/connected', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + USER_TOKEN
@@ -92,7 +92,7 @@ function createPokemonCard(pokemon) {
 
   favoriteButton.addEventListener('click', function () { 
     if (favoriteButton.textContent === 'Ajouter aux favoris') {
-      fetch('http://localhost:5000' + '/favoris/api/favoris', {
+      fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/favoris/api/favoris', {
           method: 'POST',        
           headers: {
           'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ function createPokemonCard(pokemon) {
       }
       else {
         
-        fetch('http://localhost:5000' + '/favoris/api/favoris/'+USER_NAME+'/'+pokemon.name, {
+        fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/favoris/api/favoris/'+USER_NAME+'/'+pokemon.name, {
           method: 'DELETE',        
           headers: {
           'Content-Type': 'application/json'
@@ -311,7 +311,7 @@ typeCheckboxes.forEach(function (checkbox) {
 
 
 // Récupération des données de Pokémon à partir du backend
-fetch('http://localhost:5000' + '/pokemon/api/pokemon')
+fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/pokemon/api/pokemon')
   .then(response => response.json())
   .then(data => {
     // Traiter les données JSON 
@@ -332,7 +332,7 @@ favCheckbox.addEventListener('change', function () {
     while (grid.firstChild) {
       grid.removeChild(grid.firstChild);
     }
-    fetch('http://localhost:5000' + '/pokemon/api/pokemon')
+    fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/pokemon/api/pokemon')
       .then(response => response.json())
       .then(data => {
         // Traiter les données JSON 
@@ -399,7 +399,7 @@ function rechercherPokemon() {
   var input = document.querySelector('input[name="numero"]');
   var inputValue = input.value;
 
-  fetch('http://localhost:5000' + '/pokemon/api/pokemon/' + inputValue)
+  fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/pokemon/api/pokemon/' + inputValue)
   .then(response => response.json())
   .then(data => {
     var pokemonFound = data;
@@ -417,13 +417,13 @@ function soumettreFormulaireSuppression(event) {
   var input = document.querySelector('input[name="numero"]');
   var inputValue = input.value;
 
-  fetch('http://localhost:5000' + '/pokemon/api/pokemon/' + inputValue)
+  fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/pokemon/api/pokemon/' + inputValue)
   .then(response => response.json())
   .then(data => {
     var pokemonFound = data;
     if (pokemonFound) {
       openModal(pokemonFound[0]);
-      fetch('http://localhost:5000' + '/pokemon/api/pokemon/' + inputValue, {
+      fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/pokemon/api/pokemon/' + inputValue, {
         method: 'DELETE',
         headers: {
           Authorization: 'Bearer ' + USER_TOKEN,
@@ -509,7 +509,7 @@ function soumettreFormulaireAjout(event) {
 
   console.log(body);
 
-  fetch('http://localhost:5000' + '/pokemon/api/pokemon', {
+  fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/pokemon/api/pokemon', {
     method: 'POST',
     headers: {
       Authorization: 'Bearer ' + USER_TOKEN,
