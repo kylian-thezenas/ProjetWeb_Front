@@ -7,7 +7,6 @@ function deconnect(){
     location.reload();
 }
 
-
 if (USER_TOKEN) {
 
     const usernameLabel = document.getElementById('username-placeholder');
@@ -36,13 +35,3 @@ if (USER_TOKEN) {
   
   document.getElementById('logout').addEventListener('click', deconnect);
   
-  const menuToggle = document.querySelector('.menu-toggle input[type="checkbox"]');
-    const menu = document.querySelector('.menu');
-
-    menuToggle.addEventListener('change', function() {
-        if (this.checked) {
-            menu.style.display = 'flex';
-        } else {
-            menu.style.display = 'none';
-        }
-    });

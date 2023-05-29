@@ -7,6 +7,9 @@ header{
     z-index: 999;
 }
 
+
+ 
+
 body {
     margin: 0;
     padding: 0;
@@ -205,41 +208,17 @@ body {
 transform: translateY(-6px) rotate(-45deg);
 }
 
-@media screen and (max-width: 600px) {
-.navbar .logo {
-font-size: 18px;
-}
-
-.navbar .menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #e50000;
-    flex-direction: column;
-}
-
-.navbar .menu li {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ffe700;
-}
-
-.navbar .menu li:last-child {
-    border-bottom: none;
-}
-
-.navbar .menu li a {
-    color: #ffe700;
-}
-
-.menu-toggle {
-    display: block;
-}
-
-.menu-toggle label {
-    position: relative;
-}
+@media screen and (max-width: 768px) {
+    .menu{
+        display: none;
+    }
+    .menu-toggle{
+        display: none;
+    }
+    #logo{
+        width: 20%;
+    }
+    .navbar .menu{
+        display: none;
+    }
 }

@@ -7,6 +7,56 @@
   /* Bleu */
 }
 
+.hidden{
+  display: none !important;
+}
+
+#filterOptions {
+  display: flex;
+  flex: 1;
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  justify-content: space-between;
+  z-index: 999;
+  position: fixed;
+}
+
+#searchInput {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 1%;
+  width: 100%;
+  box-sizing: border-box;
+  margin-right: 10%;
+  margin-left: 15%;
+}
+
+#filter {
+  padding-left: 10%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 4 colonnes égales */
+  grid-gap: 5%; /* Espacement entre les éléments */
+
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+#favoriteLabel{
+  margin-left: 10%;
+}
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+
+
 main {
   padding-top: 6%;
   margin: 1rem;
@@ -36,12 +86,12 @@ main {
 }
 
 #grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1000px;
   padding-top: 6%;
 }
 
@@ -198,45 +248,31 @@ main {
   margin-bottom: 20px;
 }
 
-#filterOptions {
-  display: flex;
-  float: left;
-  width: 100%;
-  margin-bottom: 10px;
-  background-color: #f2f2f2;
-  justify-content: space-between;
-  position: fixed;
-  z-index: 999;
+#filterButton{
+  display: none;
 }
 
-#searchInput {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 1%;
-  width: 100%;
-  box-sizing: border-box;
-  margin-right: 10%;
-  margin-left: 15%;
-}
+@media screen and (max-width:768px) {
+  #filterOptions{
+    display: flex;
+    margin-top: 22%;
+    margin-left:0;
+    padding-left: 0;
+    left : 0;
+  }
 
-#filter {
-  padding-left: 10%;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 4 colonnes égales */
-  grid-gap: 5%; /* Espacement entre les éléments */
+  #filter{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+  }
 
-}
+  #filterButton{
+    display: block;
+    margin-left: 0%;
+  }
 
-label {
-  display: flex;
-  align-items: center;
-}
-
-#favoriteLabel{
-  margin-left: 10%;
-}
-input[type="checkbox"] {
-  margin-right: 5px;
+  #grid{
+    padding-top: 40%;
+    
+  }
 }

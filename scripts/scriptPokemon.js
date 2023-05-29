@@ -606,3 +606,15 @@ function soumettreFormulaireModification(event) {
   var overlay = document.getElementById('overlay');
   overlay.parentNode.removeChild(overlay);
 }
+
+// menu burger
+const boutonBurger = document.getElementById('filterButton');
+const menu = document.getElementById('filter');
+
+function menuBurger() {
+  if (menu.classList.contains('hidden')) {
+    menu.classList.remove('hidden');
+  } else {
+    menu.classList.add('hidden');
+  }
+}
