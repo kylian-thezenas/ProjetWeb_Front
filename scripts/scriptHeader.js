@@ -12,7 +12,7 @@ if (USER_TOKEN) {
 
     const usernameLabel = document.getElementById('username-placeholder');
     
-    fetch('http://localhost:5000' + '/user/api/user/connected', {
+    fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/user/api/user/connected', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + USER_TOKEN

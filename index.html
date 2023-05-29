@@ -1,72 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Accueil</title>
-        <link rel="icon" href="images/logo-blanc.png" type="image/png">
-        <link rel="stylesheet" href="style/stylePokemon.css">
-        <link rel="stylesheet" href="style/styleHeader.css">
-    </head>
-    <body>
-        <script src="scripts/scriptURL.js"></script>
-        <header>
-                <nav class="navbar">
-                    <img id = "logo" src = "images/logo-blanc.png" alt = "logo">
-                    <div class="menu-toggle">
-                        <input type="checkbox" id="menu-checkbox">
-                        <label for="menu-checkbox"></label>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <ul class="menu">
-                        <li><a href="#">Pokydex</a></li>
-                    </ul>
-                    <div class="log">
-                        <a href="connexion.html" id="login" class="right bouton">SignIn</a>
-                        <a href="inscription.html" id="signup" class="right bouton">SignUp</a>
-                        <a href="#" id="logout" class="right bouton hidden">Logout</a>
-                        <div id="user-info" class="hidden">
-                            <img id="user-avatar" class="right" src="images/iconeUser.png" alt="avatar">
-                            <label id="username-placeholder" class="right"></label>
-                        </div>
-                    </div>
-                </nav>
-            <script src="scripts/scriptHeader.js"></script>
-        </header>
-        <main>
-            <div id="filterOptions">
-                <div id="filter">
-                    <label><input type="checkbox" name="type" value="Normal"> Normal </label>
-                    <label><input type="checkbox" name="type" value="Feu"> Feu </label>
-                    <label><input type="checkbox" name="type" value="Eau"> Eau </label>
-                    <label><input type="checkbox" name="type" value="Plante"> Plante </label>
-                    <label><input type="checkbox" name="type" value="Glace"> Glace </label>
-                    <label><input type="checkbox" name="type" value="Psy"> Psy </label>
-                    <label><input type="checkbox" name="type" value="Fee"> Fee </label>
-                    <label> <input type="checkbox" name="type" value="Spectre"> Spectre </label>
-                    <label><input type="checkbox" name="type" value="Electrik"> Electrik </label>
-                    <label><input type="checkbox" name="type" value="Acier"> Acier </label>
-                    <label><input type="checkbox" name="type" value="Insecte"> Insecte </label>
-                    <label><input type="checkbox" name="type" value="Poison"> Poison </label>
-                    <label><input type="checkbox" name="type" value="Vol"> Vol </label>
-                    <label><input type="checkbox" name="type" value="Combat"> Combat </label>
-                    <label><input type="checkbox" name="type" value="Roche"> Roche </label>
-                    <label><input type="checkbox" name="type" value="Sol"> Sol </label>
-                    <label><input type="checkbox" name="type" value="Dragon"> Dragon </label>
-                    <label><input type="checkbox" name="type" value="Tenebre"> Tenebre </label>
-                </div>  
-                <label id="favoriteLabel"><input type="checkbox" id="favoriteCheckbox" name="type" value="Favoris"> Favoris </label>
-                <input type="text" id="searchInput" placeholder="Rechercher...">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link rel="icon" href="images/logo-blanc.png" type="image/png">
+    <link rel="stylesheet" href="style/stylePokemon.css">
+    <link rel="stylesheet" href="style/styleHeader.css">
+</head>
+
+<body>
+    <script src="scripts/scriptURL.js"></script>
+    <header>
+        <nav class="navbar">
+            <img id="logo" src="images/logo-blanc.png" alt="logo">
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-checkbox">
+                <label for="menu-checkbox"></label>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div id="interfaceAdmin">
-                <button onclick="ouvrirFenetreAjout()" class="hidden" id="addPokemonButton" > <img id="icone" src="images/iconePikachuAjouter.png" alt="icone ajout pokemon"> </button>
-                <button onclick="ouvrirFenetreSuppression()" class="hidden" id="deletePokemonButton" > <img id="icone" src="images/iconePikachuSupprimer.png" alt="icone suppression pokemon"> </button>
+            <ul class="menu">
+                <li><a href="#">Pokydex</a></li>
+            </ul>
+            <div class="log">
+                <a href="connexion.html" id="login" class="right bouton">SignIn</a>
+                <a href="inscription.html" id="signup" class="right bouton">SignUp</a>
+                <a href="#" id="logout" class="right bouton hidden">Logout</a>
+                <div id="user-info" class="hidden">
+                    <img id="user-avatar" class="right" src="images/iconeUser.png" alt="avatar">
+                    <label id="username-placeholder" class="right"></label>
+                </div>
             </div>
-            <div id="grid">
-                <script src="scripts/scriptPokemon.js"></script>
+        </nav>
+        <script src="scripts/scriptHeader.js"></script>
+    </header>
+    <main>
+        <div id="filterOptions">
+            <div id="filter">
+                <label><input type="checkbox" name="type" value="Normal"> Normal </label>
+                <label><input type="checkbox" name="type" value="Feu"> Feu </label>
+                <label><input type="checkbox" name="type" value="Eau"> Eau </label>
+                <label><input type="checkbox" name="type" value="Plante"> Plante </label>
+                <label><input type="checkbox" name="type" value="Glace"> Glace </label>
+                <label><input type="checkbox" name="type" value="Psy"> Psy </label>
+                <label><input type="checkbox" name="type" value="Fee"> Fee </label>
+                <label> <input type="checkbox" name="type" value="Spectre"> Spectre </label>
+                <label><input type="checkbox" name="type" value="Electrik"> Electrik </label>
+                <label><input type="checkbox" name="type" value="Acier"> Acier </label>
+                <label><input type="checkbox" name="type" value="Insecte"> Insecte </label>
+                <label><input type="checkbox" name="type" value="Poison"> Poison </label>
+                <label><input type="checkbox" name="type" value="Vol"> Vol </label>
+                <label><input type="checkbox" name="type" value="Combat"> Combat </label>
+                <label><input type="checkbox" name="type" value="Roche"> Roche </label>
+                <label><input type="checkbox" name="type" value="Sol"> Sol </label>
+                <label><input type="checkbox" name="type" value="Dragon"> Dragon </label>
+                <label><input type="checkbox" name="type" value="Tenebre"> Tenebres </label>
             </div>
-        </main>
-        
-    </body>
+            <label id="favoriteLabel"><input type="checkbox" id="favoriteCheckbox" name="type" value="Favoris"> Favoris
+            </label>
+            <input type="text" id="searchInput" placeholder="Rechercher...">
+        </div>
+        <div id="interfaceAdmin">
+            <button onclick="ouvrirFenetreAjout()" class="hidden" id="addPokemonButton"> <img id="icone"
+                    src="images/iconePikachuAjouter.png" alt="icone ajout pokemon"> </button>
+            <button onclick="ouvrirFenetreSuppression()" class="hidden" id="deletePokemonButton"> <img id="icone"
+                    src="images/iconePikachuSupprimer.png" alt="icone suppression pokemon"> </button>
+            <button onclick="ouvrirFenetreModification()" class="hidden" id="updatePokemonButton"> <img id="icone"
+                    src="images/iconePikachuModifier.png" alt="icone modification pokemon"> </button>
+        </div>
+        <div id="grid">
+            <script src="scripts/scriptPokemon.js"></script>
+        </div>
+    </main>
+
+</body>
+
 </html>
