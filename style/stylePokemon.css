@@ -271,8 +271,28 @@ main {
     margin-left: 0%;
   }
 
+  #interfaceAdmin{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    position: fixed;
+    padding-top: 38%;
+    margin-left: 15%;
+  }
+
+  #interfaceAdmin button {
+    width: 20%;
+    height: 15%;
+    margin-right: 1%
+  }
+  
+  #icone {
+    width: 100%;
+    height: auto;
+  }
+
   #grid{
-    padding-top: 40%;
+    padding-top: 57%;
     
   }
 }

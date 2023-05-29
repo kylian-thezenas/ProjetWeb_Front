@@ -7,6 +7,10 @@ function deconnect(){
     location.reload();
 }
 
+function reload(){
+    location.reload();
+}
+
 if (USER_TOKEN) {
 
     const usernameLabel = document.getElementById('username-placeholder');
