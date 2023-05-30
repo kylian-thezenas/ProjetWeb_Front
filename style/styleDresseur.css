@@ -8,8 +8,9 @@ main{
 }
 
 .card-container{
+    width: 75%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -38,7 +39,7 @@ main{
 
 }
 #interfaceAdmin button{
-    width: 10%;
+    width: 7%;
 }
 
 #icone{
