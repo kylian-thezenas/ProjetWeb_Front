@@ -82,7 +82,7 @@ function createDresseur(element) {
     const equipeDresseur = document.createElement('h4');
     equipeDresseur.textContent = 'Equipe :';
     imgPokemon_container.appendChild(equipeDresseur);
-    fetch('http://localhost:5000' + '/equipe/api/equipe/' + element.name)
+    fetch('https://pokydexapi.cluster-ig3.igpolytech.fr' + '/equipe/api/equipe/' + element.name)
         .then(response => response.json())
         .then(data => {
             console.log('Voici l\'équipe du dresseur:', data.nameDresseur);
