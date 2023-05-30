@@ -371,20 +371,20 @@ var contenu = '';
 // function pour bouton d'ajout de pokemon
 function ouvrirFenetreSuppression() {
   // Création de la div de superposition
-
   var overlay = document.createElement('div');
   overlay.setAttribute('id', 'overlay');
   overlay.setAttribute('style', 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999;');
 
   // Contenu de la fenêtre
-  var contenu = '<div class="fenetre" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; width: 400px;">';
-  contenu += '<span class="fermer" onclick="fermerFenetre()">X</span>';
-  contenu += '<h2>Quel Pokemon supprimer du pokedex ?</h2>';
+  var contenu = '<div class="fenetre" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f2f2f2; border: 4px solid #c62828; border-radius: 10px; padding: 20px; width: 400px; font-family: \'Press Start 2P\', cursive;">';
+  contenu += '<span class="fermer" onclick="fermerFenetre()" style="cursor: pointer; position: absolute; top: 5px; right: 10px; font-size: 20px; color: #c62828;">X</span>';
+  contenu += '<h2 style="text-align: center; margin-bottom: 20px; font-size: 16px; color: #c62828;">Quel Pokemon supprimer du Pokédex ?</h2>';
 
   // Champs à renseigner
-  contenu += 'Numéro : <input type="text" name="numero"><br>';
-  contenu += '<button type="button" onclick="rechercherPokemon()">Rechercher</button>';
-  contenu += '<button type="button" onclick="soumettreFormulaireSuppression()">Supprimer</button>';
+  contenu += '<label style="font-weight: bold;">Numéro :</label><br>';
+  contenu += '<input type="text" name="numero" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
+  contenu += '<button type="button" onclick="rechercherPokemon()" style="margin-right: 10px; padding: 5px 10px; background-color: #c62828; color: #fff; border: none; border-radius: 4px; font-family: \'Press Start 2P\', cursive; cursor: pointer;">Rechercher</button>';
+  contenu += '<button type="button" onclick="soumettreFormulaireSuppression()" style="padding: 5px 10px; background-color: #c62828; color: #fff; border: none; border-radius: 4px; font-family: \'Press Start 2P\', cursive; cursor: pointer;">Supprimer</button>';
   contenu += '</div>';
 
   overlay.innerHTML = contenu;
@@ -392,6 +392,7 @@ function ouvrirFenetreSuppression() {
   // Ajout de la superposition à la page
   document.body.appendChild(overlay);
 }
+
 
 function fermerFenetre() {
   document.body.removeChild(overlay); // Supprime la superposition de la page
@@ -453,7 +454,6 @@ function soumettreFormulaireSuppression(event) {
   overlay.parentNode.removeChild(overlay);
 }
 
-// function pour bouton d'ajout de pokemon
 function ouvrirFenetreAjout() {
   // Création de la div de superposition
   var overlay = document.createElement('div');
@@ -461,24 +461,27 @@ function ouvrirFenetreAjout() {
   overlay.setAttribute('style', 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999;');
 
   // Contenu de la fenêtre
-  var contenu = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; width: 400px;">';
-  contenu += '<span class="fermer" onclick="fermerFenetre()">X</span>';
-  contenu += '<h2>Renseignez les champs</h2>';
+  var contenu = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f2f2f2; border: 4px solid #c62828; border-radius: 10px; padding: 20px; width: 400px; font-family: \'Press Start 2P\', cursive;">';
+  contenu += '<span class="fermer" onclick="fermerFenetre()" style="cursor: pointer; position: absolute; top: 5px; right: 10px; font-size: 20px; color: #c62828;">X</span>';
+  contenu += '<h2 style="text-align: center; margin-bottom: 20px; font-size: 16px; color: #c62828;">Renseignez les champs</h2>';
   contenu += '<form onsubmit="return soumettreFormulaireAjout(event);">';
 
   // Champs à renseigner
-  contenu += 'Nom : <input type="text" name="name"><br>';
-  contenu += 'Numéro : <input type="number" name="numero"><br>';
-  contenu += 'Description : <input type="text" name="description"><br>';
+  contenu += '<label style="font-weight: bold;">Nom :</label><br>';
+  contenu += '<input type="text" name="name" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
+  contenu += '<label style="font-weight: bold;">Numéro :</label><br>';
+  contenu += '<input type="number" name="numero" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
+  contenu += '<label style="font-weight: bold;">Description :</label><br>';
+  contenu += '<input type="text" name="description" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
 
-  contenu += 'Type : <br>';
-  var types = ['Normal', 'Feu', 'Eau', 'Electrik', 'Plante', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Dragon', 'Tenebre', 'Acier', 'Fee'];
+  contenu += '<label style="font-weight: bold;">Type :</label><br>';
+  var types = ['Normal', 'Feu', 'Eau', 'Électrik', 'Plante', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Dragon', 'Ténèbres', 'Acier', 'Fée'];
   for (var i = 0; i < types.length; i++) {
-    contenu += '<input type="radio" name="type" value="' + types[i] + '"> ' + types[i] + '<br>';
+    contenu += '<input type="radio" name="type" value="' + types[i] + '" style="margin-bottom: 5px;"> ' + types[i] + '<br>';
   }
 
   // Bouton de soumission
-  contenu += '<input type="submit" value="Soumettre">';
+  contenu += '<input type="submit" value="Soumettre" style="margin-top: 20px; padding: 8px 20px; background-color: #c62828; color: #fff; border: none; border-radius: 4px; font-family: \'Press Start 2P\', cursive; cursor: pointer;">';
   contenu += '</form>';
   contenu += '</div>';
 
@@ -487,6 +490,7 @@ function ouvrirFenetreAjout() {
   // Ajout de la superposition à la page
   document.body.appendChild(overlay);
 }
+
 
 function soumettreFormulaireAjout(event) {
   event.preventDefault();
@@ -535,29 +539,33 @@ function ouvrirFenetreModification() {
   overlay.setAttribute('style', 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999;');
 
   // Contenu de la fenêtre
-  var contenu = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; width: 400px;">';
-  contenu += '<span class="fermer" onclick="fermerFenetre()">X</span>';
-  contenu += '<h2>Quel Pokemon modifier ?</h2>';
+  var contenu = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f2f2f2; border: 4px solid #c62828; border-radius: 10px; padding: 20px; width: 400px; font-family: \'Press Start 2P\', cursive;">';
+  contenu += '<span class="fermer" onclick="fermerFenetre()" style="cursor: pointer; position: absolute; top: 5px; right: 10px; font-size: 20px; color: #c62828;">X</span>';
+  contenu += '<h2 style="text-align: center; margin-bottom: 20px; font-size: 16px; color: #c62828;">Quel Pokémon modifier ?</h2>';
 
   // Champs à renseigner
-  contenu += 'Numéro : <input type="text" name="numero"><br>';
-  contenu += '<button type="button" onclick="rechercherPokemon()">Rechercher</button>';
+  contenu += '<label style="font-weight: bold;">Numéro :</label><br>';
+  contenu += '<input type="text" name="numero" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
+  contenu += '<button type="button" onclick="rechercherPokemon()" style="padding: 8px 20px; background-color: #c62828; color: #fff; border: none; border-radius: 4px; font-family: \'Press Start 2P\', cursive; cursor: pointer;">Rechercher</button>';
 
   // Champs à renseigner
-  contenu += '<h2>Quelle modification apportée ?</h2>';
+  contenu += '<h2 style="text-align: center; margin-top: 30px; margin-bottom: 20px; font-size: 16px; color: #c62828;">Quelle modification apporter ?</h2>';
   contenu += '<form onsubmit="return soumettreFormulaireModification(event);">';
-  contenu += 'Nom : <input type="text" name="name"><br>';
-  contenu += 'Numéro : <input type="number" name="numero"><br>';
-  contenu += 'Description : <input type="text" name="description"><br>';
+  contenu += '<label style="font-weight: bold;">Nom :</label><br>';
+  contenu += '<input type="text" name="name" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
+  contenu += '<label style="font-weight: bold;">Numéro :</label><br>';
+  contenu += '<input type="number" name="numero" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
+  contenu += '<label style="font-weight: bold;">Description :</label><br>';
+  contenu += '<input type="text" name="description" style="margin-bottom: 10px; padding: 5px; width: 100%;"><br>';
 
-  contenu += 'Type : <br>';
-  var types = ['Normal', 'Feu', 'Eau', 'Electrik', 'Plante', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Dragon', 'Tenebre', 'Acier', 'Fee'];
+  contenu += '<label style="font-weight: bold;">Type :</label><br>';
+  var types = ['Normal', 'Feu', 'Eau', 'Électrik', 'Plante', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Dragon', 'Ténèbres', 'Acier', 'Fée'];
   for (var i = 0; i < types.length; i++) {
-    contenu += '<input type="radio" name="type" value="' + types[i] + '"> ' + types[i] + '<br>';
+    contenu += '<input type="radio" name="type" value="' + types[i] + '" style="margin-bottom: 5px;"> ' + types[i] + '<br>';
   }
 
   // Bouton de soumission
-  contenu += '<input type="submit" value="Soumettre">';
+  contenu += '<input type="submit" value="Soumettre" style="margin-top: 20px; padding: 8px 20px; background-color: #c62828; color: #fff; border: none; border-radius: 4px; font-family: \'Press Start 2P\', cursive; cursor: pointer;">';
   contenu += '</form>';
   contenu += '</div>';
 
@@ -566,6 +574,7 @@ function ouvrirFenetreModification() {
   // Ajout de la superposition à la page
   document.body.appendChild(overlay);
 }
+
 
 function soumettreFormulaireModification(event) {
   event.preventDefault();
