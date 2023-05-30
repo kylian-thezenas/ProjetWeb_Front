@@ -1,7 +1,7 @@
 # ProjetWeb_Front
 
 Dans le cadre du projet web de 3e année d'informatique et gestion de Polytech Montpellier, ce github est dédié à la partie 
-Front.
+Front du pokydex accessible à l'adresse https://pokydex.cluster-ig3.igpolytech.fr/index.html
 
 ## Technologie
 
