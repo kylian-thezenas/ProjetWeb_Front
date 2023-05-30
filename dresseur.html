@@ -15,7 +15,8 @@
         <nav class="navbar">
             <img id="logo" src="images/logo-blanc.png" alt="logo" onclick="reload()">
             <ul class="menu">
-                <li><a href="#">Pokydex</a></li>
+                <li><a href="index.html">Pokydex</a></li>
+                <li><a href="#">Dresseurs</a></li>
             </ul>
             <div class="log">
                 <a href="connexion.html" id="login" class="right bouton">SignIn</a>
@@ -30,6 +31,14 @@
         <script src="scripts/scriptHeader.js"></script>
     </header>
     <main>
+        <div id="interfaceAdmin">
+            <button onclick="ouvrirFenetreModification()" class="hidden" id="updateDresseurButton"> <img id="icone"
+                    src="images/iconePikachuAjouter.png" alt="icone update pokemon"> </button>
+            <button onclick="ouvrirFenetreSuppression()" class="hidden" id="deleteDresseurButton"> <img id="icone"
+                    src="images/iconePikachuSupprimer.png" alt="icone suppression pokemon"> </button>
+            <button onclick="ouvrirFenetreAjout()" class="hidden" id="addDresseurButton"> <img id="icone"
+                    src="images/iconePikachuModifier.png" alt="icone add pokemon"> </button>
+        </div>
         <div id="grid">
             <script src="scripts/scriptDresseur.js"></script>
         </div>

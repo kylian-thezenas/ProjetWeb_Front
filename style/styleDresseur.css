@@ -1,3 +1,46 @@
 main{
     padding-top: 10%;
 }
+
+#grid{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgDresseur-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.imgDresseur-container img{
+    width: 25rem;
+    height: 25rem;
+}
+
+.imgPokemon-container img {
+    width: 8rem;
+    height: 8rem;
+}
+
+#interfaceAdmin{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+}
+#interfaceAdmin button{
+    width: 10%;
+}
+
+#icone{
+    width: 100%;
+}
